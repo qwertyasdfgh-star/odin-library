@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Readiverse - Digital Library</title>
+    <link rel="icon" href="./book-icon.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<!-- Header -->
+<header class="header glass-effect" data-aos="fade-down">
+    <div class="container flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center">
+            <i data-feather="book-open" class="icon w-8 h-8 mr-2"></i>
+            <h1>Readiverse</h1>
+        </div>
+        <!-- Stats section -->
+        <div class="stats flex justify-center mt-4 md:mt-0 relative">
+            <div class="flex items-center mr-4 group">
+                <i data-feather="book" class="icon mr-2" id="totalBooksIcon"></i>
+                <span id="totalBooks" class="text-pink-500 font-bold">0</span>
+                <div class="tooltip">
+                    Total Books
+                </div>
+            </div>
+            <div class="flex items-center mr-4 group">
+                <i data-feather="check-circle" class="icon mr-2" id="readBooksIcon"></i>
+                <span id="readBooks" class="text-blue-400 font-bold">0</span>
+                <div class="tooltip">
+                    Books Read
+                </div>
+            </div>
+            <div class="flex items-center mr-4 group">
+                <i data-feather="book-open" class="icon mr-2" id="readingBooksIcon"></i>
+                <span id="readingBooks" class="text-yellow-400 font-bold">0</span>
+                <div class="tooltip">
+                    Currently Reading
+                </div>
+            </div>
+            <div class="flex items-center group">
+                <i data-feather="bookmark" class="icon mr-2" id="unreadBooksIcon"></i>
+                <span id="unreadBooks" class="text-gray-400 font-bold">0</span>
+                <div class="tooltip">
+                    Planning to Read
+                </div>
+            </div>
+        </div>
+        <!-- Add Book Button -->
+        <button id="addBookBtn" class="mt-4 md:mt-0">
+            <i data-feather="plus" class="w-6 h-6 inline mr-2"></i>
+            Add Book
+        </button>
+    </div>
+</header>
+
+        <!-- Books Grid -->
+        <div id="booksContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Books will be dynamically added here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState">
+            <i data-feather="book-open" class="w-24 h-24 mx-auto text-white opacity-50 mb-4"></i>
+            <h2 class="text-2xl font-semibold text-white mb-2">Your library is empty</h2>
+            <p class="text-white opacity-80">Start building your collection by adding your first book!</p>
+        </div>
+    </main>
+
+    <!-- Add Book Modal -->
+    <dialog id="bookDialog">
+        <form id="bookForm" class="space-y-6">
+            <h2>Add New Book</h2>
+            
+            <div class="space-y-4">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" required placeholder="Enter book title">
+                </div>
+                
+                <div>
+                    <label for="author">Author</label>
+                    <input type="text" id="author" required placeholder="Enter author name">
+                </div>
+                
+                <div>
+                    <label for="pages">Pages</label>
+                    <input type="number" id="pages" required min="1" placeholder="Enter number of pages">
+                </div>
+                
+                <div>
+                    <label for="coverUrl">Book Cover Image URL (optional)</label>
+                    <input type="url" id="coverUrl" placeholder="https://example.com/book-cover.jpg">
+                </div>
+                
+                <div>
+                    <label for="genre">Genre</label>
+                    <select id="genre">
+                        <option value="fiction">Fiction</option>
+                        <option value="non-fiction">Non-fiction</option>
+                        <option value="mystery">Mystery</option>
+                        <option value="romance">Romance</option>
+                        <option value="sci-fi">Science Fiction</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="biography">Biography</option>
+                        <option value="self-help">Thriller</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="status">Reading Status</label>
+                    <select id="status">
+                        <option value="unread">🔖 Planning to Read</option>
+                        <option value="reading">📖 Currently Reading</option>
+                        <option value="read">📘 Finished Reading</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="flex space-x-4 pt-4">
+                <button type="submit" class="submitBtn"> Add Book </button>
+                <button type="button" id="cancelBtn">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </dialog>
+    <script src="./script.js"></script>
+</body>
+</html>
